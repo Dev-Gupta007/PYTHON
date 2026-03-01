@@ -7,7 +7,7 @@ for i in range(1 , 6):
     for j in range(1 , i):
         print(j , end = ' ')
     print()
-
+print()
 
 # 1
 # 1 3
@@ -44,7 +44,6 @@ for i in range(n - 1, 0, -1):
         print("* ", end="") # Print stars
         
     print()
-
 print()
 
 # *
@@ -93,7 +92,7 @@ for i in range(n - 1, 0, -1):
         front_spaces = " " * (n - i)
         mid_spaces = " " * (2 * i - 3)
         print(front_spaces + "*" + mid_spaces + "*")
-
+print()
 
 
 
@@ -110,6 +109,7 @@ for i in range(1, n + 1):
     for j in range(i):
         print(chr(65 + j), end=" ") # chr(65) is 'A', chr(66) is 'B', etc.
     print()  
+print()
 
 #         1
 #       2 1 2
