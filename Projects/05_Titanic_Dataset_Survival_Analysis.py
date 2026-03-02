@@ -40,15 +40,17 @@ df["Survived"] = df["Survived"].astype(bool)
 
 # What Percentage Suvived?
 
-Survived = df[df["Survived"] == True] 
+Survived = df[df["Survived"]] 
 
 Percentage = (Survived.count()/df["Survived"].count())*100
 
 print()
 
-print(f"{Survived["Survived"].count()} people survived out of {df["Survived"].count()}")
+print("---Overall Survival---")
+print(f"Total Passengers: {df['PassengerId'].count()}")
+print(f"{Survived['Survived'].count()} people survived out of {df['Survived'].count()}")
 
-print(f"{(Percentage["Survived"]).round(2)} % People Survived" )
+print(f"{(Percentage['Survived']).round(2)} % People Survived" )
 
 print()
 
@@ -59,10 +61,19 @@ print("-"*50)
 Number_of_Males = (df[df["Sex"] == "male"].count())["Sex"]
 Number_of_Females = df[df["Sex"] == "female"].count()["Sex"]
 
-print(f"""No. of Males Survived = {Number_of_Males}
-No. of Females Survived = {Number_of_Females}""")
+print(f"""No. of Males = {Number_of_Males}
+No. of Females = {Number_of_Females}""")
 
 print(f"Male/Female Ratio = {(Number_of_Males/Number_of_Females):.2f}")
+
+Number_of_Males_Survived = Survived[Survived["Sex"] == 'male'].count()['Sex']
+Number_of_Females_Survived = Survived[Survived["Sex"] == 'female'].count()['Sex']
+
+print(f"Number of Males Survived = {Number_of_Males_Survived}")
+print(f"Number of Females Survived = {Number_of_Females_Survived}")
+print(f"Male/Female Surviving Ratio = {(Number_of_Males_Survived/Number_of_Females_Survived):.2f}")
+print(f"Percentage Males Survived = {(Number_of_Males_Survived*100/Number_of_Males):.2f} %")
+print(f"Percentage Females Survived = {(Number_of_Females_Survived*100/Number_of_Females):.2f} %")
 
 print()
 print("-"*50)
@@ -75,7 +86,7 @@ First_Class_Survivived = Survived[Survived["Pclass"]  == 1].count()["Pclass"]
 Total_First_Class_Passengers = df[df["Pclass"] == 1].count()["Pclass"]
 First_Class_Survival_Rate = First_Class_Survivived*100 / Total_First_Class_Passengers
 
-print(f"First Class Survival Rate = {First_Class_Survival_Rate:.2f}")
+print(f"First Class Survival Rate = {First_Class_Survival_Rate:.2f} %")
 
 # Second Class Survival Rate
 
@@ -83,7 +94,7 @@ Second_Class_Survivived = Survived[Survived["Pclass"]  == 2].count()["Pclass"]
 Total_Second_Class_Passengers = df[df["Pclass"] == 2].count()["Pclass"]
 Second_Class_Survival_Rate = Second_Class_Survivived*100 / Total_Second_Class_Passengers
 
-print(f"Second Class Survival Rate = {Second_Class_Survival_Rate:.2f}")
+print(f"Second Class Survival Rate = {Second_Class_Survival_Rate:.2f} %")
 
 # Third Class Survival Rate
 
@@ -91,7 +102,7 @@ Third_Class_Survivived = Survived[Survived["Pclass"]  == 3].count()["Pclass"]
 Total_Third_Class_Passengers = df[df["Pclass"] == 3].count()["Pclass"]
 Third_Class_Survival_Rate = Third_Class_Survivived*100 / Total_Third_Class_Passengers
 
-print(f"Third Class Survival Rate = {Third_Class_Survival_Rate:.2f}")
+print(f"Third Class Survival Rate = {Third_Class_Survival_Rate:.2f} %")
 
 print()
 print("-"*50)
@@ -104,8 +115,8 @@ Total_Passengers = df["PassengerId"].count()
 No_of_Adult_Passengers = df[df["Age"] >= 18].count()["Age"]
 No_of_Child_Passengers = df[df["Age"] < 18].count()["Age"]
 
-print(f"Percentage of Adult Passengers = {(No_of_Adult_Passengers*100/Total_Passengers):.2f}")
-print(f"Percentage of Child Passengers = {(No_of_Child_Passengers*100/Total_Passengers):.2f}")
+print(f"Percentage of Adult Passengers = {(No_of_Adult_Passengers*100/Total_Passengers):.2f} %")
+print(f"Percentage of Child Passengers = {(No_of_Child_Passengers*100/Total_Passengers):.2f} %")
 
 Survived_Adult_Passengers = Survived[Survived["Age"] >= 18].count()["Age"]
 Survived_Child_Passengers = Survived[Survived["Age"] < 18].count()["Age"]
@@ -113,6 +124,6 @@ Survived_Child_Passengers = Survived[Survived["Age"] < 18].count()["Age"]
 Adult_Survival_Rate = Survived_Adult_Passengers*100/No_of_Adult_Passengers
 Child_Survival_Rate = Survived_Child_Passengers*100/No_of_Child_Passengers
 print()
-print(f"Adult Survival Rate : {Adult_Survival_Rate:.2f}")
-print(f"Child Survival Rate : {Child_Survival_Rate:.2f}")
+print(f"Adult Survival Rate : {Adult_Survival_Rate:.2f} %")
+print(f"Child Survival Rate : {Child_Survival_Rate:.2f} %")
 print()
