@@ -12,15 +12,25 @@ print("="*50)
 
 import pandas as pd
 
-def make_table(labels, values, column_names=("Metric", "Value")):
 
-    if len(labels) != len(values):
-        raise ValueError("Labels and values must have the same length.")
+# -------------------------------
+# TABLE CREATION FUNCTION
+# -------------------------------
 
-    table = pd.DataFrame({
-        column_names[0]: labels,
-        column_names[1]: values
-    })
+def make_table(*columns, column_names):
+
+    if len(columns) != len(column_names):
+        raise ValueError("Number of columns must match number of column names.")
+
+    length = len(columns[0])
+
+    for col in columns:
+        if len(col) != length:
+            raise ValueError("All columns must have the same length.")
+
+    table = pd.DataFrame(
+        {name: col for name, col in zip(column_names, columns)}
+    )
 
     return table
 
@@ -32,11 +42,8 @@ df = pd.read_csv(r"D:\DEV\Programming\PYTHON\Projects\~~Titanic.csv")
 # -------------------------------
 
 df["Age"] = df["Age"].fillna(df["Age"].median())
-
 df.drop("Cabin", axis=1, inplace=True)
-
 df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])
-
 df["Survived"] = df["Survived"].astype(bool)
 
 Survived = df[df["Survived"]]
@@ -50,15 +57,9 @@ print("OVERALL SURVIVAL STATISTICS")
 print("="*50)
 
 summary = make_table(
-    ["Total Passengers",
-     "Passengers Survived",
-     "Survival Percentage"],
-
-    [len(df),
-     len(Survived),
-     f"{(len(Survived)*100 / len(df)):.2f}%"],
-
-    ("Statistic", "Value")
+    ["Total Passengers", "Passengers Survived", "Survival Percentage"],
+    [len(df), len(Survived), f"{(len(Survived)*100 / len(df)):.2f}%"],
+    column_names=("Statistic", "Value")
 )
 
 print(summary.to_string(index=False))
@@ -95,18 +96,17 @@ Male_Female_Stat = make_table(
      Number_of_Males_Survived,
      Number_of_Females_Survived,
      round(Number_of_Males_Survived/Number_of_Females_Survived, 2),
-     f"{(Number_of_Males_Survived*100/Number_of_Males):.2f} %",
-     f"{(Number_of_Females_Survived*100/Number_of_Females):.2f} %"],
+     f"{(Number_of_Males_Survived*100/Number_of_Males):.2f}%",
+     f"{(Number_of_Females_Survived*100/Number_of_Females):.2f}%"],
 
-    ("Metric", "Value")
+    column_names=("Metric", "Value")
 )
 
 print(Male_Female_Stat.to_string(index=False))
 
 print("\nConclusion:")
 print("Female passengers had a significantly higher survival rate.")
-print("This supports the 'women and children first' evacuation policy during the sinking of the",
-      "the", ".")
+print("This supports the 'women and children first' evacuation policy.")
 
 # -------------------------------
 # CLASS WISE SURVIVAL RATE
@@ -116,17 +116,9 @@ print("\n" + "="*50)
 print("CLASS WISE SURVIVAL RATE")
 print("="*50)
 
-First_Class_Survivived = len(Survived[Survived["Pclass"] == 1])
-Total_First_Class_Passengers = len(df[df["Pclass"] == 1])
-First_Class_Survival_Rate = First_Class_Survivived*100 / Total_First_Class_Passengers
-
-Second_Class_Survivived = len(Survived[Survived["Pclass"] == 2])
-Total_Second_Class_Passengers = len(df[df["Pclass"] == 2])
-Second_Class_Survival_Rate = Second_Class_Survivived*100 / Total_Second_Class_Passengers
-
-Third_Class_Survivived = len(Survived[Survived["Pclass"] == 3])
-Total_Third_Class_Passengers = len(df[df["Pclass"] == 3])
-Third_Class_Survival_Rate = Third_Class_Survivived*100 / Total_Third_Class_Passengers
+First_Class_Survival_Rate = len(Survived[Survived["Pclass"] == 1])*100 / len(df[df["Pclass"] == 1])
+Second_Class_Survival_Rate = len(Survived[Survived["Pclass"] == 2])*100 / len(df[df["Pclass"] == 2])
+Third_Class_Survival_Rate = len(Survived[Survived["Pclass"] == 3])*100 / len(df[df["Pclass"] == 3])
 
 First_Class_Male_Survival = (
     len(Survived[(Survived["Sex"] == "male") & (Survived["Pclass"] == 1)]) *100 /
@@ -145,13 +137,13 @@ Class_Wise_Survival_Report = make_table(
      "Survival of First Class Males",
      "Survival of Third Class Females"],
 
-    [f"{First_Class_Survival_Rate:.2f} %",
-     f"{Second_Class_Survival_Rate:.2f} %",
-     f"{Third_Class_Survival_Rate:.2f} %",
-     f"{First_Class_Male_Survival:.2f} %",
-     f"{Third_Class_Female_Survival:.2f} %"],
+    [f"{First_Class_Survival_Rate:.2f}%",
+     f"{Second_Class_Survival_Rate:.2f}%",
+     f"{Third_Class_Survival_Rate:.2f}%",
+     f"{First_Class_Male_Survival:.2f}%",
+     f"{Third_Class_Female_Survival:.2f}%"],
 
-    ("Class", "Value")
+    column_names=("Class Metric", "Value")
 )
 
 print(Class_Wise_Survival_Report.to_string(index=False))
@@ -180,25 +172,16 @@ Survived_Child_Passengers = len(Survived[Survived["Age"] < 18])
 Adult_Survival_Rate = Survived_Adult_Passengers*100/No_of_Adult_Passengers
 Child_Survival_Rate = Survived_Child_Passengers*100/No_of_Child_Passengers
 
-Adult_Child_Survival_Rate_Summary = make_table(
-    ["Percentage of Adult Passengers",
-     "Percentage of Child Passengers",
-     "Adult Survival Rate",
-     "Child Survival Rate"],
-
-    [f"{(No_of_Adult_Passengers*100/Total_Passengers):.2f} %",
-     f"{(No_of_Child_Passengers*100/Total_Passengers):.2f} %",
-     f"{Adult_Survival_Rate:.2f} %",
-     f"{Child_Survival_Rate:.2f} %"],
-
-    ("Metric", "Value")
+Adult_Child_Summary = make_table(
+    ["Adult Survival Rate", "Child Survival Rate"],
+    [f"{Adult_Survival_Rate:.2f}%", f"{Child_Survival_Rate:.2f}%"],
+    column_names=("Metric", "Value")
 )
 
-print(Adult_Child_Survival_Rate_Summary.to_string(index=False))
+print(Adult_Child_Summary.to_string(index=False))
 
 print("\nConclusion:")
 print("Children had a higher survival rate than adults.")
-print("This again supports the 'women and children first' rescue priority.")
 
 # -------------------------------
 # SURVIVAL BY EMBARKED PORT
@@ -212,33 +195,35 @@ Survival_Per_C = len(Survived[Survived["Embarked"] == "C"]) *100 / len(df[df["Em
 Survival_Per_Q = len(Survived[Survived["Embarked"] == "Q"]) *100 / len(df[df["Embarked"] == "Q"])
 Survival_Per_S = len(Survived[Survived["Embarked"] == "S"]) *100 / len(df[df["Embarked"] == "S"])
 
-Survival_By_Embarked_Port = make_table(
-    ["Cherbourg Survival Percentage",
-     "Queenstown Survival Percentage",
-     "Southampton Survival Percentage"],
-
-    [f"{Survival_Per_C:.2f} %",
-     f"{Survival_Per_Q:.2f} %",
-     f"{Survival_Per_S:.2f} %"],
-
-    ("Port", "Percent")
+Embarked_Table = make_table(
+    ["Cherbourg", "Queenstown", "Southampton"],
+    [f"{Survival_Per_C:.2f}%", f"{Survival_Per_Q:.2f}%", f"{Survival_Per_S:.2f}%"],
+    column_names=("Port", "Survival Rate")
 )
 
-print(Survival_By_Embarked_Port.to_string(index=False))
-
-print("\nConclusion:")
-print("Survival rates vary depending on the embarkation port.")
-print("This may be related to differences in passenger class distribution across ports.")
+print(Embarked_Table.to_string(index=False))
 
 # -------------------------------
-# FINAL ANALYSIS SUMMARY
+# FAMILY ANALYSIS
 # -------------------------------
+
+df["Family_Size"] = df["SibSp"] + df["Parch"] + 1
 
 print("\n" + "="*50)
-print("FINAL ANALYSIS SUMMARY")
+print("FAMILY SIZE DISTRIBUTION")
 print("="*50)
 
-print("1. Gender was the strongest survival factor.")
-print("2. Passenger class also strongly influenced survival chances.")
-print("3. Children had better survival chances than adults.")
-print("4. Embarkation port showed smaller differences in survival.")
+Alone = len(df[df["Family_Size"] == 1])
+Small = len(df[(df["Family_Size"] >= 2) & (df["Family_Size"] <= 4)])
+Large = len(df[df["Family_Size"] >= 5])
+
+Family_Size_Table = make_table(
+    ["Alone (1)", "Small Family (2-4)", "Large Family (5+)"],
+    [Alone, Small, Large],
+    [f"{Alone*100/Total_Passengers:.2f}%",
+     f"{Small*100/Total_Passengers:.2f}%",
+     f"{Large*100/Total_Passengers:.2f}%"],
+    column_names=("Family Size", "Passengers", "Percentage")
+)
+
+print(Family_Size_Table.to_string(index=False))

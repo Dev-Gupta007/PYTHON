@@ -161,3 +161,119 @@ Strongest survival factor
 Any surprising pattern
 
 This is the most important part.
+
+1️⃣ Fare vs Survival
+
+Instead of just looking at passenger class, analyze ticket fare directly.
+
+What to Examine
+
+Average fare of survivors vs non-survivors
+
+Fare distribution
+
+Whether higher-paying passengers survived more
+
+Why This Is Interesting
+
+Passenger class is categorical, but fare is continuous, which gives a more detailed picture.
+
+Possible Insight
+
+Passengers paying higher fares often had:
+
+better cabins
+
+easier access to lifeboats
+
+higher social priority
+
+2️⃣ Age Distribution of Survivors
+
+You already compared adult vs child, but you can go deeper.
+
+What to Examine
+
+Compare survival across multiple age groups:
+
+Children
+
+Teenagers
+
+Young adults
+
+Middle-aged adults
+
+Elderly passengers
+
+Why This Is Interesting
+
+This reveals whether survival preference applied to:
+
+only children
+
+or younger people in general.
+
+Possible Insight
+
+You might find that very young passengers had the highest survival rates.
+
+3️⃣ Passenger Titles (Hidden Social Information)
+
+This is a very interesting one.
+
+The Name column contains titles like:
+
+Mr
+
+Mrs
+
+Miss
+
+Master
+
+Dr
+
+Rev
+
+etc.
+
+What to Examine
+
+Extract titles and analyze survival by title.
+
+Why This Is Powerful
+
+Titles indirectly reveal:
+
+gender
+
+age
+
+social status
+
+Examples:
+
+Master → young boy
+
+Mrs → married woman
+
+Mr → adult male
+
+Possible Insight
+
+You might discover patterns such as:
+
+Masters (boys) surviving more than adult males.
+
+⭐ Why These Analyses Are Valuable
+
+They help you learn:
+
+Feature extraction
+
+Deeper pattern discovery
+
+Real exploratory data analysis
+
+These are skills used by data analysts and data scientists.
