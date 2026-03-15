@@ -1,0 +1,163 @@
+1️⃣ Introduction
+
+What is the dataset?
+
+What is the objective?
+
+Example:
+
+The goal of this analysis is to understand what factors affected survival on the Titanic.
+
+🔹 2️⃣ Load the Dataset
+
+Import pandas
+
+Load CSV file
+
+Show first 5 rows
+
+Learn:
+
+How data is loaded into a DataFrame
+
+🔹 3️⃣ Understand the Dataset
+
+df.info()
+
+df.describe()
+
+df.columns
+
+Learn:
+
+Data types
+
+Number of rows
+
+Missing values
+
+Numerical summaries
+
+🔹 4️⃣ Missing Values Analysis
+
+df.isnull().sum()
+
+Identify columns with missing data
+
+Decide:
+
+Fill Age
+
+Drop Cabin
+
+Fill Embarked
+
+Learn:
+
+Why cleaning is important
+
+📊 Survival Analysis Section
+🔹 5️⃣ Overall Survival Rate
+
+Count survived vs not survived
+
+Convert to percentage
+
+Question:
+👉 Was survival rare or common?
+
+🔹 6️⃣ Survival by Gender
+
+Compare male vs female survival rate
+
+Question:
+👉 Did gender affect survival?
+
+🔹 7️⃣ Survival by Passenger Class
+
+Compare survival across Pclass (1, 2, 3)
+
+Question:
+👉 Did social class matter?
+
+🔹 8️⃣ Survival by Age
+
+Compare average age of survivors vs non-survivors
+
+Optional:
+
+Create Age Groups
+
+Question:
+👉 Were children prioritized?
+
+🔹 9️⃣ Survival by Fare
+
+Compare average fare
+
+Analyze distribution
+
+Question:
+👉 Did paying more increase survival chances?
+
+🔹 🔟 Survival by Embarked Port
+
+Compare survival by C, Q, S
+
+Question:
+👉 Did boarding location matter?
+
+👨‍👩‍👧 Family Analysis Section
+🔹 1️⃣1️⃣ Create Family Size
+
+FamilySize = SibSp + Parch + 1
+
+Learn:
+
+Creating new columns
+
+🔹 1️⃣2️⃣ Survival by Family Size
+
+Compare survival for:
+
+Alone
+
+Small family
+
+Large family
+
+Question:
+👉 Was traveling alone risky?
+
+🔍 Deeper Analysis
+🔹 1️⃣3️⃣ Combined Analysis
+
+Examples:
+
+Gender + Class
+
+Age Group + Class
+
+Question:
+👉 Who were the most vulnerable passengers?
+
+🔹 1️⃣4️⃣ Correlation Analysis
+
+Correlation between numeric variables
+
+Learn:
+
+Strength of relationships
+
+📝 Final Section
+🔹 1️⃣5️⃣ Conclusions
+
+Write:
+
+5–8 key findings
+
+Strongest survival factor
+
+Any surprising pattern
+
+This is the most important part.
