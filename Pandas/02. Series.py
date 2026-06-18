@@ -6,13 +6,13 @@ series = pd.Series(data , index = ["a" , "b" , "c" , "d" , "e"])
 
 print(series)
 
-print(series.loc["a"]) #loc ----> Location by label
+print(series.loc["a"]) #loc ----> Location by label ----> label (index name) based indexing   
 
 series.loc["a"] = 200
 
 print(series)
 
-print(series.iloc[0])   #iloc Location by integer
+print(series.iloc[0])   #iloc Location by integer ----> Position Based Indexing (Integer Position) 
 
 print(series[series >= 200])
 
