@@ -1,8 +1,10 @@
 # Python Learning Repository
 
-This repository contains my Python programming practice and projects.
+Welcome to my Python learning repository.
 
-## Topics Covered
+This repository contains notes, programs, exercises, and projects created while learning Python.
+
+## Repository Structure
 
 - File Handling
 - Flow of Control
@@ -10,19 +12,20 @@ This repository contains my Python programming practice and projects.
 - Strings
 - Lists
 - Tuples
+- Dictionaries
 - NumPy
 - Pandas
-- Dictionary
 - Projects
 
-## Purpose
+## Goals
 
-This repository is used to:
 - Learn Python fundamentals
-- Practice problem-solving
-- Store notes and examples
-- Build small Python projects
+- Practice problem solving
+- Build projects
+- Document my learning journey
 
 ## Author
 
 Dev Gupta
+
+GitHub: https://github.com/Dev-Gupta007
