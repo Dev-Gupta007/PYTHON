@@ -3,6 +3,8 @@
 # <file_objectname > = open(<filename>, <mode>)
 # <file_objectname> = open(<file_path>, <mode>)     raw_strings = r"C:\temp\data.txt"
 
+f = open("D:\\DEV\\Programming\\PYTHON\\File_Handling\\sample.txt" , "r")
+
 #-----------------------------------------------------------------------------------------------
 
 # Modes
@@ -16,8 +18,18 @@
 
 #-----------------------------------------------------------------------------------------------
 
+file = f.read()
+
+words = file.split()
+
+print(f"Number of Words in Sample.txt {len(L1)}")
+
+#-----------------------------------------------------------------------------------------------
+
 # Closing Files 
 
 # <File_Handle>.close()
+
+f.close()
 
 #-----------------------------------------------------------------------------------------------
