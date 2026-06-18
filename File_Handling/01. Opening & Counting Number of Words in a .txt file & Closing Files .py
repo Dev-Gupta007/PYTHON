@@ -22,7 +22,7 @@ file = f.read()
 
 words = file.split()
 
-print(f"Number of Words in Sample.txt {len(L1)}")
+print(f"Number of Words in Sample.txt {len(words)}")
 
 #-----------------------------------------------------------------------------------------------
 
