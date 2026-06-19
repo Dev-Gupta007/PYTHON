@@ -1,0 +1,39 @@
+1. Counting Characters
+
+Q1. ✅ Write a Python program to count the total number of characters in a text file.
+
+Q2. ✅Write a program to count the number of alphabetic characters, digits, and special characters in a file separately.
+
+Q3. ✅Write a program that displays the total number of characters excluding spaces and newline characters.
+
+2. Counting Vowels
+
+Q1. ✅ Write a Python program to count the number of vowels (a, e, i, o, u) present in a text file.
+
+Q2. ✅ Write a program to count the occurrences of each vowel separately.
+
+Q3.✅ Write a program to find whether vowels or consonants are more frequent in a file.
+
+3. Copying Contents from One File to Another
+
+Q1. Write a Python program to copy the contents of source.txt into destination.txt.
+
+Q2. Write a program to copy only the odd-numbered lines from one file to another.
+
+Q3. Write a program to create a backup copy of a file named backup.txt.
+
+4. Appending Data to a File
+
+Q1. Write a Python program that takes user input and appends it to an existing file.
+
+Q2. Write a program to append the current date and time to a log file every time the program runs.
+
+Q3. Write a program that appends a new student record (Roll No., Name, Marks) to a file.
+
+5. Finding the Most Frequent Word
+
+Q1. Write a Python program to find the most frequently occurring word in a text file.
+
+Q2. Write a program to display the top 5 most common words in a file.
+
+Q3. Write a program to count the frequency of each word and store the result in another file.
