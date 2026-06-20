@@ -16,6 +16,7 @@ This repository contains notes, programs, exercises, and projects created while 
 - NumPy
 - Pandas
 - Projects
+- Sorting
 
 ## Goals
 
