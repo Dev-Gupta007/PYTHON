@@ -12,4 +12,5 @@ while a < length:
     else:
         str_2 += string[a]
         a += 1
-print(str_2)
+print("Original String: " , string)
+print("Capitalized Words String" , str_2)
