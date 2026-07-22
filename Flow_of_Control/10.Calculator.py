@@ -24,3 +24,6 @@ while Choice == 'y':
         print(f"{x} is {(x/y)*100} % of {y}")
     else :
         print("Enter valid Number")
+    Choice = input("Do you want to continue (y/n): ")
+
+print("Thank You For Using The Calculator! ")
