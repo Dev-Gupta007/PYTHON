@@ -86,3 +86,40 @@ def count_rec():
 
     print("Total Records" , count)
     f.close()
+
+# Question 3
+
+# A csv file "States.csv" contains some data about all the states of India.
+# Each record of the file contains the following data : 4
+
+# ~ Name of the State
+# ~ Capital of the State
+# ~ Population of the State
+# ~ Official Language of the State
+
+# For example, a sample record in the file is :
+# ['Andhra Pradesh','Amaravati',52221000,'Telugu']
+
+# Write a Python program which reads the data from this file and appends
+# all those records where population is more than 10000000 into another
+# csv file 'More.csv'.
+
+# Note : "States.csv" also contains the Header row. The Header row
+# should NOT be copied to "More.csv".
+
+import csv
+
+States = open("States.csv" , "r")
+More = open("More.csv" , "a")
+
+S_reader = csv.reader(States)
+next(S_reader)
+
+M_writer = csv.writer(More)
+
+for i in S_reader:
+    if int(i[2]) > 10000000:
+        M_writer.writerow(i)
+
+States.close()
+More.close()
