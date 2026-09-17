@@ -20,7 +20,6 @@ def Accept():
     Price_Per_Unit = float(input("Enter Price Per Unit: "))
 
     csv_writer = csv.writer(f)
-
     csv_writer.writerow([Product_Id , Product_Name , Quantity_Sold , Price_Per_Unit])
 
     f.close()
@@ -28,9 +27,7 @@ def Accept():
 def CalculateTotalSales():
 
     f = open("Sales.csv" , "r")
-
     csv_reader = csv.reader(f)
-
     Total = 0
 
     next(csv_reader)
@@ -40,7 +37,6 @@ def CalculateTotalSales():
         Price = float(i[3])
 
         Total += Qty_Sold*Price
-
     f.close()
 
     return Total
@@ -48,18 +44,45 @@ def CalculateTotalSales():
     
 # Question 2
 
-# A csv file "P_record. csv" contains the records of patients in a hospital.
+# A csv file "P_record.csv" contains the records of patients in a hospital.
 # Each record of the file contains the following data :
+
 # ~Name of a patient
 # ~Disease
 # ~Number of days patient is admitted
 # ~Amount
 
 # For example, a sample record of the file may be :
-# []"Gunjan" , Jaundice" , 4 , 15000]
+# ["Gunjan" , Jaundice" , 4 , 15000]
 # Write the following Python functions to perform the specified operations
 # on this file :
 # (i)Write a function read data ( ) which reads all the data from the
 # file and displays the details of all the Cancer patients.
 # (ii)Write a function count rec ( ) which counts and returns the
 # number of records in the file.
+
+import csv
+
+def read_data():
+    f = open("P_record.csv" , "r")
+
+    reader = csv.reader(f)
+    next(reader)
+
+    for i in reader:
+        if i[1] == "Cancer":
+            print(i)
+    f.close()
+
+def count_rec():
+    f = open("P_record.csv" , "r")
+
+    count = 0
+    reader = csv.reader(f)
+    next(reader)
+
+    for i in reader:
+        count += 1
+
+    print("Total Records" , count)
+    f.close()
