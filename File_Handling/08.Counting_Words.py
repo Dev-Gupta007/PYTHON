@@ -62,3 +62,11 @@ for i in words:
         if j.isdigit():
             print(i)
             break
+
+# Counting Specific Words (IS , TO , UP)
+
+count = 0
+for i in words:
+    if i.upper() in ("IS","TO","UP"):
+        count +=1
+print("count of IS,TO,UP is" , count)
