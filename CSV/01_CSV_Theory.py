@@ -389,3 +389,323 @@ csv_reader = csv.DictReader(file)
 for line in csv_reader:
     break
 # → `line` is a **dictionary**
+
+# Summary
+
+# ============================================================
+#                    CSV FILE COMMANDS
+# ============================================================
+
+import csv
+
+
+# ------------------------------------------------------------
+# 1. OPENING A CSV FILE
+# ------------------------------------------------------------
+
+# Reading:
+f = open("data.csv", "r")
+
+# Writing:
+f = open("data.csv", "w", newline="")
+
+# Appending:
+f = open("data.csv", "a", newline="")
+
+
+# Common modes:
+
+# "r"  -> Read
+# "w"  -> Write
+# "a"  -> Append
+
+
+# ------------------------------------------------------------
+# 2. csv.reader()
+# ------------------------------------------------------------
+
+# Creates a CSV reader object.
+
+csv_reader = csv.reader(f)
+
+
+# Example:
+
+f = open("data.csv", "r")
+
+csv_reader = csv.reader(f)
+
+for row in csv_reader:
+    print(row)
+
+f.close()
+
+
+# Each row is returned as a LIST.
+
+# Example row:
+# ['Aman', '85', '90', '78']
+
+
+# ------------------------------------------------------------
+# 3. ACCESSING COLUMNS
+# ------------------------------------------------------------
+
+for row in csv_reader:
+    print(row[0])       # First column
+    print(row[1])       # Second column
+
+
+# Indexing starts from 0.
+
+
+# ------------------------------------------------------------
+# 4. SKIPPING HEADER
+# ------------------------------------------------------------
+
+csv_reader = csv.reader(f)
+
+header = next(csv_reader)
+
+for row in csv_reader:
+    print(row)
+
+
+# next() reads the next row and moves the iterator forward.
+
+
+# ------------------------------------------------------------
+# 5. next()
+# ------------------------------------------------------------
+
+row = next(csv_reader)
+
+
+# Reads ONE row from the CSV reader.
+
+# If no rows are left:
+# StopIteration occurs.
+
+
+# ------------------------------------------------------------
+# 6. csv.writer()
+# ------------------------------------------------------------
+
+# Creates a CSV writer object.
+
+writer = csv.writer(f)
+
+
+# ------------------------------------------------------------
+# 7. writerow()
+# ------------------------------------------------------------
+
+# Writes ONE row.
+
+writer.writerow(["Aman", 90, 85, 88])
+
+
+# Syntax:
+# writer.writerow(list)
+
+
+# ------------------------------------------------------------
+# 8. writerows()
+# ------------------------------------------------------------
+
+# Writes MULTIPLE rows.
+
+data = [
+    ["Aman", 90, 85],
+    ["Riya", 95, 92],
+    ["Karan", 87, 89]
+]
+
+writer.writerows(data)
+
+
+# Syntax:
+# writer.writerows(list_of_rows)
+
+
+# ------------------------------------------------------------
+# 9. delimiter
+# ------------------------------------------------------------
+
+# Default delimiter is comma (,).
+
+csv_reader = csv.reader(f, delimiter=",")
+
+
+# A different separator can be specified:
+
+csv_reader = csv.reader(f, delimiter="_")
+
+
+# Example:
+# Aman_90_85_88
+
+
+# ------------------------------------------------------------
+# 10. newline=""
+# ------------------------------------------------------------
+
+# Recommended while writing CSV files:
+
+f = open("data.csv", "w", newline="")
+
+writer = csv.writer(f)
+
+
+# Helps avoid unwanted blank lines,
+# especially on Windows.
+
+
+# ------------------------------------------------------------
+# 11. SEARCHING A CSV FILE
+# ------------------------------------------------------------
+
+f = open("student.csv", "r")
+
+csv_reader = csv.reader(f)
+
+for row in csv_reader:
+
+    if row[0] == "Aman":
+        print(row)
+
+f.close()
+
+
+# ------------------------------------------------------------
+# 12. COUNTING RECORDS
+# ------------------------------------------------------------
+
+f = open("student.csv", "r")
+
+csv_reader = csv.reader(f)
+
+count = 0
+
+for row in csv_reader:
+    count += 1
+
+print("Number of records =", count)
+
+f.close()
+
+
+# ------------------------------------------------------------
+# 13. READING A CSV FILE INTO A LIST
+# ------------------------------------------------------------
+
+f = open("data.csv", "r")
+
+csv_reader = csv.reader(f)
+
+data = list(csv_reader)
+
+print(data)
+
+f.close()
+
+
+# IMPORTANT:
+# csv.reader(f) itself is NOT a list.
+# It is a reader/iterator object.
+
+
+# ------------------------------------------------------------
+# 14. seek() WITH CSV
+# ------------------------------------------------------------
+
+f = open("data.csv", "r")
+
+csv_reader = csv.reader(f)
+
+# Read some rows...
+
+f.seek(0)
+
+# Re-create the reader after seeking:
+csv_reader = csv.reader(f)
+
+
+# ------------------------------------------------------------
+# 15. IMPORTANT CSV COMMANDS AT A GLANCE
+# ------------------------------------------------------------
+
+# import csv
+# -> Import CSV module
+
+# open("data.csv", "r")
+# -> Open CSV for reading
+
+# open("data.csv", "w", newline="")
+# -> Open CSV for writing
+
+# open("data.csv", "a", newline="")
+# -> Open CSV for appending
+
+# csv.reader(file)
+# -> Create CSV reader object
+
+# next(csv_reader)
+# -> Read one row and move forward
+
+# csv.writer(file)
+# -> Create CSV writer object
+
+# writer.writerow(row)
+# -> Write one row
+
+# writer.writerows(rows)
+# -> Write multiple rows
+
+# file.seek(0)
+# -> Move file pointer to beginning
+
+# delimiter=","
+# -> Specify separator
+
+
+# ============================================================
+#              TEXT vs BINARY vs CSV
+# ============================================================
+
+# TEXT FILE
+#
+# open("data.txt", "r")
+# read()
+# readline()
+# readlines()
+# write()
+# writelines()
+
+
+# BINARY FILE
+#
+# import pickle
+# open("data.dat", "rb")
+# open("data.dat", "wb")
+# open("data.dat", "ab")
+# pickle.dump()
+# pickle.load()
+# seek()
+# tell()
+# EOFError
+
+
+# CSV FILE
+#
+# import csv
+# open("data.csv", "r")
+# open("data.csv", "w", newline="")
+# open("data.csv", "a", newline="")
+# csv.reader()
+# csv.writer()
+# next()
+# writerow()
+# writerows()
+# seek()
+# delimiter
