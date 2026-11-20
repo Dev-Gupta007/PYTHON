@@ -125,3 +125,61 @@ def UpdateSalary():
         pickle.dump(record, f)
 
     f.close()
+
+
+# Each record in RESOURCES.DAT is a tuple:
+# • R_ID: Resource Person's ID (int)
+# • R_Name: Resource Person's Name (str)
+# • R_Expertise: Area of expertise (str)
+# • Charges: Hourly workshop fee in rupees (int or float)
+# Example record: (12, 'P. Velusami', 'Machine Learning', 5000)
+
+# Write Function Update() to increase charges of each resource person by 500
+
+#-----------------Method I-----------------
+
+def Update():
+    f = open("RESOURCES.DAT" , "rb")
+    record = []
+
+    try:
+        while True:
+            records = pickle.load(f)
+            records = records[0:3] + (records[3] + 500,)
+
+            record.append(records) 
+    except EOFError:
+        pass
+
+    f.close()
+
+    f1 = open("RESOURCES.DAT" , "wb")
+
+    for rec in record:
+        pickle.dump(rec , f1)
+
+    f1.close()
+
+# ---------------Method II--------------------
+import os
+def Update():
+    f = open("RESOURCES.DAT" , "rb")
+    f1 = open("TEMP.DAT" , "wb")
+
+    record = []
+
+    try:
+        while True:
+            records = pickle.load(f)
+            records = records[0:3] + (records[3] + 500,)
+
+            record.append(records)
+    except EOFError:
+        pass
+
+    pickle.dump(record, f1)
+    
+    f.close()
+    f1.close()
+
+    os.replace("TEMP.DAT","RESOURCES.DAT")
