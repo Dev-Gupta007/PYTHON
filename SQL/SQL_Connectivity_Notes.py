@@ -114,11 +114,11 @@ for x in mycursor:
 
 # SQL QUERY:
 
-CREATE TABLE STUDENT (
-    ROLLNO INT PRIMARY KEY,
-    NAME VARCHAR(30),
-    MARKS FLOAT
-);
+# CREATE TABLE STUDENT (
+#     ROLLNO INT PRIMARY KEY,
+#     NAME VARCHAR(30),
+#     MARKS FLOAT
+# );
 
 # PYTHON:
 
@@ -140,11 +140,11 @@ CREATE TABLE STUDENT (
 
 # PYTHON:
 
-# sql = "INSERT INTO STUDENT VALUES (1, 'Aman', 95)"
+sql = "INSERT INTO STUDENT VALUES (1, 'Aman', 95)"
 
-# mycursor.execute(sql)
+mycursor.execute(sql)
 
-# mydb.commit()
+mydb.commit()
 
 # COMMIT():
 
@@ -167,17 +167,17 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
+sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
 
-# values = [
-#     (1, "Aman", 95),
-#     (2, "Rahul", 88),
-#     (3, "Riya", 92)
-# ]
+values = [
+    (1, "Aman", 95),
+    (2, "Rahul", 88),
+    (3, "Riya", 92)
+]
 
-# mycursor.executemany(sql, values)
+mycursor.executemany(sql, values)
 
-# mydb.commit()
+mydb.commit()
 
 # DIFFERENCE:
 
@@ -198,13 +198,13 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
+sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
 
-# values = (1, "Aman", 95)
+values = (1, "Aman", 95)
 
-# mycursor.execute(sql, values)
+mycursor.execute(sql, values)
 
-# mydb.commit()
+mydb.commit()
 
 # IMPORTANT:
 
@@ -262,10 +262,10 @@ CREATE TABLE STUDENT (
 
 # If SELECT returns 5 records:
 
-# mycursor.execute("SELECT * FROM STUDENT")
+mycursor.execute("SELECT * FROM STUDENT")
 
-# print(mycursor.fetchone())
-# print(mycursor.fetchall())
+print(mycursor.fetchone())
+print(mycursor.fetchall())
 
 # fetchone() retrieves the first record.
 # fetchall() retrieves the remaining 4 records.
@@ -283,13 +283,13 @@ CREATE TABLE STUDENT (
 
 # PYTHON:
 
-# sql = "UPDATE STUDENT SET MARKS = %s WHERE ROLLNO = %s"
+sql = "UPDATE STUDENT SET MARKS = %s WHERE ROLLNO = %s"
 
-# values = (98, 1)
+values = (98, 1)
 
-# mycursor.execute(sql, values)
+mycursor.execute(sql, values)
 
-# mydb.commit()
+mydb.commit()
 
 # Without WHERE, all records in the table may be updated.
 
@@ -305,13 +305,13 @@ CREATE TABLE STUDENT (
 
 # PYTHON:
 
-# sql = "DELETE FROM STUDENT WHERE ROLLNO = %s"
+sql = "DELETE FROM STUDENT WHERE ROLLNO = %s"
 
-# values = (2,)
+values = (2,)
 
-# mycursor.execute(sql, values)
+mycursor.execute(sql, values)
 
-# mydb.commit()
+mydb.commit()
 
 # DELETE:
 # Removes records.
@@ -347,13 +347,13 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# mycursor.execute(
-#     "UPDATE STUDENT SET MARKS = 90 WHERE ROLLNO = 1"
-# )
+mycursor.execute(
+    "UPDATE STUDENT SET MARKS = 90 WHERE ROLLNO = 1"
+)
 
-# print(mycursor.rowcount)
+print(mycursor.rowcount)
 
-# mydb.commit()
+mydb.commit()
 
 # B. lastrowid
 
@@ -362,13 +362,13 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# mycursor.execute(
-#     "INSERT INTO EMPLOYEE (NAME, SALARY) VALUES ('Aman', 25000)"
-# )
+mycursor.execute(
+    "INSERT INTO EMPLOYEE (NAME, SALARY) VALUES ('Aman', 25000)"
+)
 
-# print(mycursor.lastrowid)
+print(mycursor.lastrowid)
 
-# mydb.commit()
+mydb.commit()
 
 # C. description
 
@@ -376,9 +376,9 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# mycursor.execute("SELECT * FROM STUDENT")
+mycursor.execute("SELECT * FROM STUDENT")
 
-# print(mycursor.description)
+print(mycursor.description)
 
 # 15. SQL COMMANDS THROUGH PYTHON
 # ------------------------------------------------------------
@@ -426,57 +426,57 @@ CREATE TABLE STUDENT (
 # 17. COMPLETE PYTHON-MYSQL PROGRAM
 # ------------------------------------------------------------
 
-# import mysql.connector
+import mysql.connector
 
-# mydb = mysql.connector.connect(
-#     host="localhost",
-#     user="root",
-#     password="1234",
-#     database="school"
-# )
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="school"
+)
 
-# mycursor = mydb.cursor()
+mycursor = mydb.cursor()
 
-# # INSERT
+# INSERT
 
-# sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
+sql = "INSERT INTO STUDENT VALUES (%s, %s, %s)"
 
-# values = (4, "Karan", 91)
+values = (4, "Karan", 91)
 
-# mycursor.execute(sql, values)
+mycursor.execute(sql, values)
 
-# mydb.commit()
+mydb.commit()
 
-# # DISPLAY
+# DISPLAY
 
-# mycursor.execute("SELECT * FROM STUDENT")
+mycursor.execute("SELECT * FROM STUDENT")
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# for row in records:
-#     print(row)
+for row in records:
+    print(row)
 
-# # UPDATE
+# UPDATE
 
-# sql = "UPDATE STUDENT SET MARKS = %s WHERE ROLLNO = %s"
+sql = "UPDATE STUDENT SET MARKS = %s WHERE ROLLNO = %s"
 
-# mycursor.execute(sql, (95, 4))
+mycursor.execute(sql, (95, 4))
 
-# mydb.commit()
+mydb.commit()
 
-# # DELETE
+# DELETE
 
-# sql = "DELETE FROM STUDENT WHERE ROLLNO = %s"
+sql = "DELETE FROM STUDENT WHERE ROLLNO = %s"
 
-# mycursor.execute(sql, (4,))
+mycursor.execute(sql, (4,))
 
-# mydb.commit()
+mydb.commit()
 
-# # CLOSE
+# CLOSE
 
-# mycursor.close()
+mycursor.close()
 
-# mydb.close()
+mydb.close()
 
 # 18. UNDERSTANDING SELECT QUERY OUTPUT
 # ------------------------------------------------------------
@@ -490,12 +490,12 @@ CREATE TABLE STUDENT (
 
 # CODE:
 
-# mycursor.execute("SELECT * FROM STUDENT")
+mycursor.execute("SELECT * FROM STUDENT")
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# print(type(records))
-# print(records)
+print(type(records))
+print(records)
 
 # OUTPUT:
 
@@ -515,12 +515,12 @@ CREATE TABLE STUDENT (
 
 # ACCESSING INDIVIDUAL VALUES:
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# print(records[0])       # First record
-# print(records[0][0])    # Roll number
-# print(records[0][1])    # Name
-# print(records[0][2])    # Marks
+print(records[0])       # First record
+print(records[0][0])    # Roll number
+print(records[0][1])    # Name
+print(records[0][2])    # Marks
 
 # 19. USING CONDITIONS WITH SELECT
 # ------------------------------------------------------------
@@ -528,41 +528,41 @@ CREATE TABLE STUDENT (
 # EXAMPLE 1:
 # Find students scoring more than 90.
 
-# mycursor.execute(
-#     "SELECT * FROM STUDENT WHERE MARKS > 90"
-# )
+mycursor.execute(
+    "SELECT * FROM STUDENT WHERE MARKS > 90"
+)
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# for row in records:
-#     print(row)
+for row in records:
+    print(row)
 
 # EXAMPLE 2:
 # Display students in descending order of marks.
 
-# mycursor.execute(
-#     "SELECT * FROM STUDENT ORDER BY MARKS DESC"
-# )
+mycursor.execute(
+    "SELECT * FROM STUDENT ORDER BY MARKS DESC"
+)
 
-# for row in mycursor.fetchall():
-#     print(row)
+for row in mycursor.fetchall():
+    print(row)
 
 # EXAMPLE 3:
 # Display only student names.
 
-# mycursor.execute("SELECT NAME FROM STUDENT")
+mycursor.execute("SELECT NAME FROM STUDENT")
 
-# for row in mycursor.fetchall():
-#     print(row[0])
+for row in mycursor.fetchall():
+    print(row[0])
 
 # EXAMPLE 4:
 # Count total students.
 
-# mycursor.execute("SELECT COUNT(*) FROM STUDENT")
+mycursor.execute("SELECT COUNT(*) FROM STUDENT")
 
-# result = mycursor.fetchone()
+result = mycursor.fetchone()
 
-# print("Total Students:", result[0])
+print("Total Students:", result[0])
 
 # 20. USING PYTHON LOOPS WITH DATABASE RECORDS
 # ------------------------------------------------------------
@@ -570,31 +570,31 @@ CREATE TABLE STUDENT (
 # EXAMPLE 1:
 # Find students scoring above 90.
 
-# mycursor.execute("SELECT * FROM STUDENT")
+mycursor.execute("SELECT * FROM STUDENT")
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# for row in records:
+for row in records:
 
-#     if row[2] > 90:
-#         print(row)
+    if row[2] > 90:
+        print(row)
 
 # EXAMPLE 2:
 # Calculate average marks.
 
-# mycursor.execute("SELECT MARKS FROM STUDENT")
+mycursor.execute("SELECT MARKS FROM STUDENT")
 
-# records = mycursor.fetchall()
+records = mycursor.fetchall()
 
-# total = 0
-# count = 0
+total = 0
+count = 0
 
-# for row in records:
-#     total += row[0]
-#     count += 1
+for row in records:
+    total += row[0]
+    count += 1
 
-# if count > 0:
-#     print("Average:", total / count)
+if count > 0:
+    print("Average:", total / count)
 
 # 21. EXCEPTION HANDLING IN DATABASE CONNECTIVITY
 # ------------------------------------------------------------
@@ -604,32 +604,32 @@ CREATE TABLE STUDENT (
 
 # EXAMPLE:
 
-# import mysql.connector
+import mysql.connector
 
-# try:
+try:
 
-#     mydb = mysql.connector.connect(
-#         host="localhost",
-#         user="root",
-#         password="1234",
-#         database="school"
-#     )
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="1234",
+        database="school"
+    )
 
-#     mycursor = mydb.cursor()
+    mycursor = mydb.cursor()
 
-#     mycursor.execute("SELECT * FROM STUDENT")
+    mycursor.execute("SELECT * FROM STUDENT")
 
-#     for row in mycursor.fetchall():
-#         print(row)
+    for row in mycursor.fetchall():
+        print(row)
 
-# except mysql.connector.Error as err:
+except mysql.connector.Error as err:
 
-#     print("Error:", err)
+    print("Error:", err)
 
-# finally:
+finally:
 
-#     if 'mydb' in locals() and mydb.is_connected():
-#         mydb.close()
+    if 'mydb' in locals() and mydb.is_connected():
+        mydb.close()
 
 # IMPORTANT TERMS:
 
